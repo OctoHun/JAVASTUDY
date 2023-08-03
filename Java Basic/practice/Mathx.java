@@ -1,13 +1,13 @@
 package practice;
 
 public class Mathx {
-  public static double reduce(BinaryOperation binaryOperation ,double init, double... numbers) {
+  public static double reduce(BinaryOperation binaryOperation, double init, double... numbers) {
     return reduceIf(x -> true, binaryOperation, init, numbers);
   }
 
-  public static double reduceIf(Predicate predicate, BinaryOperation binaryOperation ,double init, double... numbers) {
+  public static double reduceIf(Predicate predicate, BinaryOperation binaryOperation, double init, double... numbers) {
     double result = init;
-    for (double number: numbers) {
+    for (double number : numbers) {
       if (predicate.apply(number)) {
         result = binaryOperation.apply(result, number);
       }
@@ -16,24 +16,35 @@ public class Mathx {
   }
 
   // private static double product(double... numbers) {
-  //   return reduce(new Multiply(), 1, numbers);
+  // return reduce(new Multiply(), 1, numbers);
   // }
-  
+
   // static double product(double... numbers) {
-  //   double result = 1;
-  //   for (double number: numbers) {
-  //     result *= number;
-  //   }
-  //   return result;
+  // double result = 1;
+  // for (double number: numbers) {
+  // result *= number;
   // }
-
-
+  // return result;
+  // }
 
   public static int sum(int n) { // Overloading
-    return n*(n+1)/2;
+    return n * (n + 1) / 2;
+  }
+
+  public static int sum(Range range) {
+    return sum(range.getUpperBound()) - sum(range.getLowerBound() - 1);
   }
 
   public static double sum(double... numbers) {
     return reduce(new Plus(), 0, numbers);
   }
+
+  public static int gcd(int[] r) {
+    // int temp =
+    // for (int i=temp; i>1; i++) {
+
+    // }
+    // return 1;
+  }
+
 }
