@@ -5,45 +5,6 @@ public class FractionalTest {
   private FractionalTest() {
   }
 
-  // 아래3개 Abstraction barrier
-  public static int[] fractional(int numorator, int denomiator) { // constructor
-    if (denomiator == 0)
-      throw new IllegalArgumentException("분자가 0이야! 다시");
-    int[] rep = new int[] { numorator, denomiator };
-    normalize(rep); // 기약분수로 만듬
-    // classInvariant(rep);
-    return rep;
-  }
-
-  public static int numerator(int[] r) { // 분자 돌려줌 getter
-    return r[0];
-  }
-
-  public static int denomiator(int[] r) { // 분모 돌려줌 getter
-    return r[1];
-  }
-
-  private static int[] add(int[] f1, int[] f2) {
-    return fractional(numerator(f1) * denomiator(f2) + numerator(f2) * denomiator(f1),
-        denomiator(f1) * denomiator(f2));
-  }
-
-  private static String toString(int[] add) {
-
-    return numerator(add) / Mathx.gcd(numerator(add), denomiator(add)) + "/" +
-        denomiator(add) / Mathx.gcd(numerator(add), denomiator(add));
-  }
-
-  private static void normalize(int[] r) {
-    int g = Mathx.gcd(r[0], r[1]);
-    r[0] /= g;
-    r[1] /= g;
-  }
-
-  public static boolean equals(int[] x, int[] y) {
-    return numerator(x) == numerator(y) && denomiator(x) == denomiator(y);
-  }
-
   public static void main(String[] args) {
     // 유리수(정수) 4개 args에서 덧셈공식, 4개 못채우면 계속반복
     // args 4개가 정수만 들어오면 1단계 통과(에러처리 통과)
@@ -69,15 +30,19 @@ public class FractionalTest {
     // n2 /= i;
     // }
     // }
-    int[][] rs = { fractional(1, 2),
-        fractional(2, 4),
-        fractional(4, 8),
-        fractional(5, 10) };
-    for (int[] r : rs)
-      System.out.println(toString(r));
+    Fractional[] rs = { new Fractional(1, 2),
+        new Fractional(2, 4),
+        new Fractional(4, 8),
+        new Fractional(5, 10) };
+    for (Fractional r : rs) {
+      System.out.println(r.intValue());
+    }
+
+    System.out.println(Mathx.<Fractional>reduceIf(x -> true, Fractional::add, rs[0], rs[1], rs[2], rs[3]));
+    System.out.println(Mathx.<String>reduceIf(x -> true, (x, y) -> x + y, "", "a", "b", "c"));
+    System.out.println(Mathx.<String>reduce((x, y) -> x + y, "", "a", "b", "c"));
 
     // System.out.println(x==y); // [] 주소값이 다르니 false
-
   }
 
   // private static String addFraction(int a, int b, int c, int d) {
