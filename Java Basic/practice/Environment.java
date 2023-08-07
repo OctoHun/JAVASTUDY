@@ -1,5 +1,6 @@
 package practice;
 
+// 컴파일러 작동 순서
 public class Environment {
   // public static void main(String[] args) {
   // int x = 4;
