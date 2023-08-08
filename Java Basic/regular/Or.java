@@ -27,7 +27,7 @@
 // BinaryOperation 추가
 package regular;
 
-public final class Or extends BinaryOperation {
+public final class Or extends BinaryOperation implements Expression {
 
   public Or(Expression left, Expression right) {
     super(left, "|", right);

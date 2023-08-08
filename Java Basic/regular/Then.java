@@ -26,7 +26,7 @@
 // BinaryOperation 추가
 package regular;
 
-public final class Then extends BinaryOperation {
+public final class Then extends BinaryOperation implements Expression {
 
   public Then(Expression left, Expression right) {
     super(left, "", right);

@@ -1,6 +1,6 @@
 package regular;
 
-public abstract class BinaryOperation implements Expression {
+class BinaryOperation {
 
   private Expression left;
   private Expression right;

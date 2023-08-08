@@ -20,7 +20,7 @@
 
 package regular;
 
-public final class Star extends BinaryOperation {
+public final class Star extends BinaryOperation implements Expression {
   static Literal right = new Literal('*');
 
   public Star(Expression left) {
