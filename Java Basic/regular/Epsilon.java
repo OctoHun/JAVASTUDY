@@ -9,7 +9,8 @@ public class Epsilon implements Expression {
     // 하지만 하나는 있어야 하므로 Epsilon 혹은 Expression에서 Epsilon을 하나는 만들어준다.
 
   @Override
-  public String toString() {
-    return "\u03B5";
+  public void accept(Visitor visitor) {
+    visitor.visit(this);
   }
+
 }

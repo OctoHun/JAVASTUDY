@@ -19,4 +19,6 @@ public interface Expression {
     return new Star(this);
   }
 
+  public default void accept(Visitor visitor);
+
 }
